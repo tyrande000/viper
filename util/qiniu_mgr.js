@@ -15,7 +15,7 @@ qiniu_mgr.prototype.init = function(CONFIG){
 		this.mac = new qiniu.auth.digest.Mac(CONFIG.AK, CONFIG.SK);
 		this.config = new qiniu.conf.Config();
 		// 空间对应的机房
-		this.config.zone = qiniu.zone.Zone_z0;
+		this.config.zone = qiniu.zone.Zone_z1;
 		// 是否使用https域名
 		//config.useHttpsDomain = true;
 		// 上传是否使用cdn加速
