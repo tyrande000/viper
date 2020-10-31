@@ -296,7 +296,7 @@ utils.random_string = function (count, chars) {
 }
 
 utils.valid_array = function (array) {
-	if (Array.isArray(array) && array.length > 0) {
+	if (Array.isArray(array)) {
 		return true;
 	}
 
