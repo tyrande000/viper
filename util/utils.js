@@ -338,6 +338,9 @@ utils.valid_domain_rr = function (domain) {
 }
 
 utils.valid_domain = function (v) {
+	let reg = /^(?!.*?_.*?)(\*\.)?(?!(?:[\d\w]+?\.)?\-[\w\d\.\-]*?)(?![\w\d]+?\-\.(?:[\d\w\.\-]+?))(?=[\w\d])(?=[\w\d\.\-]*?\.+[\w\d\.\-]*?)(?![\w\d\.\-]{254})(?!(?:\.?[\w\d\-\.]*?[\w\d\-]{64,}\.)+?)[\w\d\.\-]+?(?<=[\d\w])(?<=[\w\d]{2,})$/;
+	return reg.test(v);
+	
 	const obj = parseDomain(v);
 
 	if (!obj) {
