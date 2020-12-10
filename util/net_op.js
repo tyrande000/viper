@@ -62,6 +62,10 @@ net_op.is_private = function (ip) {
 	return ip_mod.isPrivate(ip);
 }
 
+net_op.is_public = function (ip) {
+	return ip_mod.isPublic(ip);
+}
+
 //获取用户 ip
 net_op.get_caller_ip = (request) => {
 	let ip = request.headers['x-forwarded-for'] ||
