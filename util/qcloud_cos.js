@@ -98,3 +98,23 @@ qcloud_cos.prototype.download2file = function(key, filepath){
 		});
 	});
 }
+
+qcloud_cos.prototype.get_obj_url = function(key, expires = 3600){
+	let self = this;
+	
+	return new Promise(function (resolve, reject) {
+		self.cos.getObjectUrl({
+			Bucket: self.config.bucket,
+			Region: self.config.region,
+			Key: key,
+			Sign: true,
+			Expires: expires
+		}, function(err, data) {
+			if (err) {
+				resolve(null);
+				return;
+			}
+			resolve(data);
+		});
+	});
+}
