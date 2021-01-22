@@ -119,6 +119,6 @@ qcloud_cos.prototype.get_obj_url = function(key, expires = 3600){
 	});
 }
 
-qiniu_mgr.prototype.download_url_expired = function(){
+qcloud_cos.prototype.download_url_expired = function(){
 	return parseInt(Date.now() / 1000) + 3600; // 1小时过期
 }
