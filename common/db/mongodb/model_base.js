@@ -134,11 +134,11 @@ model_base.prototype.promise_delete = function(cond, options){
 	});
 }
 
-model_base.prototype.promise_aggregate = function(pipeline){
+model_base.prototype.promise_aggregate = function(pipeline, option = {}){
 	let self = this;
 	
 	return new Promise((resolve, reject) => {
-		self.model.aggregate(pipeline).exec(function (err, res) {
+		self.model.aggregate(pipeline).option(option).exec(function (err, res) {
 			if(err){
 				reject(err);
 			}else{
