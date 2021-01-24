@@ -749,7 +749,7 @@ utils.aes_delete_ext = function (data, cb) {
 
 utils.rsa_encrypto2 = function (publicKey, data, length, cb) {
 	var container = [];
-	
+
 	for (var i = 0; i < data.length; i += length) {
 		container.push(crypto.publicEncrypt({
 			key: publicKey,
@@ -793,6 +793,10 @@ utils.spawn = function (proc_name, params) {
 }
 
 utils.zlib_inflate_obj = function(buf){
+	if(!buf){
+		return null;
+	}
+
 	let data_buf = zlib.inflateSync(buf);
 	
 	if(!data_buf){
@@ -803,5 +807,9 @@ utils.zlib_inflate_obj = function(buf){
 }
 
 utils.zlib_deflate_obj = function(obj){
+	if(!obj){
+		return null;
+	}
+	
 	return zlib.deflateSync(Buffer.from(JSON.stringify(obj)));
 }
