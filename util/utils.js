@@ -12,6 +12,7 @@ const admzip = require('adm-zip');
 const xml2js = require('xml2js');
 const parseDomain = require('parse-domain');
 const spawn = require('child_process').spawn;
+const zlib = require('zlib');
 
 var utils = module.exports = {};
 
@@ -748,7 +749,7 @@ utils.aes_delete_ext = function (data, cb) {
 
 utils.rsa_encrypto2 = function (publicKey, data, length, cb) {
 	var container = [];
-
+	
 	for (var i = 0; i < data.length; i += length) {
 		container.push(crypto.publicEncrypt({
 			key: publicKey,
@@ -780,7 +781,7 @@ utils.spawn = function (proc_name, params) {
 
 		proc.stdout.setEncoding('utf8');
 		proc.stdout.on('data', function (data) {
-			let str = data.toString()
+			let str = data.toString();
 			let lines = str.split(/(\r?\n)/g);
 			console.log(lines.join(""));
 		});
@@ -789,4 +790,18 @@ utils.spawn = function (proc_name, params) {
 			resolve(code);
 		});
 	});
+}
+
+utils.zlib_inflate_obj = function(buf){
+	let data_buf = zlib.inflateSync(buf);
+	
+	if(!data_buf){
+		return null;
+	}
+
+	return JSON.parse(data_buf.toString());
+}
+
+utils.zlib_deflate_obj = function(obj){
+	return zlib.deflateSync(Buffer.from(JSON.stringify(obj)));
 }
