@@ -29,7 +29,7 @@ intelbox_api.prototype.file_report = async function(url, md5, relationship){
 	let ret = await net_op.common_request({
         url: `${url}/file/report?file_hash=${md5}&relationship=${relationship}`,
         method: 'GET'
-    });
+	});
 	
     if (ret.success) {
         let data = JSON.parse(ret.body);

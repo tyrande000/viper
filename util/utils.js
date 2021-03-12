@@ -626,6 +626,11 @@ utils.hash = function (algo, content) {
 	return crypto.createHash(algo).update(content).digest("hex");
 }
 
+utils.valid_unix_path = function(path) {
+	let pattern = new RegExp("^(/[^/ ]*)+/?$");
+	return pattern.test(path)
+}
+
 utils.valid_https = function (suspect) {
 	var pattern = /^((http|https):\/\/)/;
 	return pattern.test(suspect);
