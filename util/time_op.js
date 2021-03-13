@@ -52,3 +52,9 @@ time_op.date_format = function (date, format) {
 
 	return format;
 };
+
+time_op.get_current_minute = function(){
+	let now = this.now_seconds();
+
+	return now - now % 60;
+}
