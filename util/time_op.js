@@ -58,3 +58,9 @@ time_op.get_current_minute = function(){
 
 	return now - now % 60;
 }
+
+time_op.get_current_day = function(){
+	let now = this.now_seconds();
+
+	return now - (now % (60 * 60 * 24));
+}
